@@ -15,6 +15,6 @@ export class BasicosComponent implements OnInit {
   }
 
   guardar(miFormulario: NgForm) {
-    console.log( miFormulario.value )
+    console.log( miFormulario )
   }
 }
