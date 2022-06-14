@@ -18,12 +18,29 @@ interface Favorito {
 })
 export class DinamicosComponent {
 
+  nuevoAnime: string = '';
+
   persona: persona = {
     nombre: 'Luis',
     favoritos: [
       { id: 1, nombre: 'Dragon Ball'},
       { id: 2, nombre: 'Naruto'}
     ]
+  }
+
+  agregarJuego() {
+
+    if (this.nuevoAnime === '') {
+      return
+    }
+
+    const nuevoFavorito: Favorito = {
+      id: this.persona.favoritos.length + 1,
+      nombre: this.nuevoAnime
+    }
+
+    this.persona.favoritos.push({ ...nuevoFavorito });
+    this.nuevoAnime = '';
   }
 
 
