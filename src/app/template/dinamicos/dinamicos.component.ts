@@ -1,5 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+
+interface persona {
+  nombre: string;
+  favoritos: Favorito[];
+}
+
+interface Favorito {
+  id: number;
+  nombre: string;
+}
 
 @Component({
   selector: 'app-dinamicos',
@@ -7,14 +16,16 @@ import { NgForm } from '@angular/forms';
   styles: [
   ]
 })
-export class DinamicosComponent implements OnInit {
+export class DinamicosComponent {
 
-  // @ViewChild('miFormulario') miFormulario!: NgForm;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  persona: persona = {
+    nombre: 'Luis',
+    favoritos: [
+      { id: 1, nombre: 'Dragon Ball'},
+      { id: 2, nombre: 'Naruto'}
+    ]
   }
+
 
   guardar() {
     console.log('formulario posteado')
