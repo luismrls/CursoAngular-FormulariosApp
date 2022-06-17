@@ -57,4 +57,8 @@ export class DinamicosComponent implements OnInit {
 
   }
 
+  eliminarAnime(index: number) {
+    this.favoritosArr.removeAt(index);
+  }
+
 }
