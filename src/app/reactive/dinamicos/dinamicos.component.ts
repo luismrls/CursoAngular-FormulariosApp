@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class DinamicosComponent implements OnInit {
+export class DinamicosComponent implements OnInit { 
+
+  a: number = 0;
 
   constructor() { }
 
