@@ -39,7 +39,7 @@ export class BasicosComponent implements OnInit {
 
     if (this.miFormulario.invalid){
       
-      this.miFormulario.markAsTouched();
+      this.miFormulario.markAllAsTouched();
 
       return;
     }
