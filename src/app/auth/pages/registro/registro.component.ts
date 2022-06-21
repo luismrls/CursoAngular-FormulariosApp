@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { emailPattern, nombreApellidoPatter, noPuedeSerStrider } from 'src/app/shared/validators/validaciones';
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -9,27 +11,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegistroComponent implements OnInit {
 
-  nombreApellidoPatter: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-
-  noPuedeSerStrider( control: FormControl ) {
-    const valor: string = control.value?.trim().toLowerCase();
-    if( valor === 'strider' ){
-      return {
-        noStrider: true
-      }
-    }
-
-    return null;
-  }
-
   miFormulario: FormGroup = this.formBuilder.group({
-    nombre: ['', [Validators.required, Validators.pattern( this.nombreApellidoPatter ) ] ],
-    email: ['', [Validators.required,  Validators.pattern( this.emailPattern ) ] ],
-    username: ['', [Validators.required, this.noPuedeSerStrider ] ],
+    nombre: ['', [Validators.required, Validators.pattern( this.validatorService.nombreApellidoPatter ) ] ],
+    email: ['', [Validators.required,  Validators.pattern( this.validatorService.emailPattern ) ] ],
+    username: ['', [Validators.required, this.validatorService.noPuedeSerStrider ] ],
   })
 
-  constructor( private formBuilder: FormBuilder ) { }
+  constructor( private formBuilder: FormBuilder, private validatorService: ValidatorService ) { }
 
   ngOnInit(): void {
 
