@@ -15,6 +15,10 @@ export class RegistroComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.pattern( this.validatorService.nombreApellidoPatter ) ] ],
     email: ['', [Validators.required,  Validators.pattern( this.validatorService.emailPattern ) ] ],
     username: ['', [Validators.required, this.validatorService.noPuedeSerStrider ] ],
+    password: ['', [Validators.required, Validators.minLength(6) ] ],
+    password2: ['', [Validators.required ] ],
+  }, {
+    validators: [ this.validatorService.camposIguales('password', 'password2') ]
   })
 
   constructor( private formBuilder: FormBuilder, private validatorService: ValidatorService ) { }
@@ -23,7 +27,8 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.reset({
       nombre: "Luis Morales",
-      email: 'test@test.com'
+      email: 'test@test.com',
+      username: 'test_user'
     });
   }
 
