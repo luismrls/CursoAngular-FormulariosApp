@@ -1,4 +1,4 @@
-<h2>Template: Básicos</h2>
+<h2>Validaciones: Reactivas</h2>
 <hr>
 
 <div class="row">
@@ -28,7 +28,7 @@
                            formControlName="email"
                            placeholder="Email del usuario">
                     <span class="form-text text-danger"
-                           *ngIf="campoNoValido('email')">Debe ingresar un correo valido</span>
+                           *ngIf="campoNoValido('email')">{{ emailErrorsMsg }}</span>
                 </div>
             </div>
 

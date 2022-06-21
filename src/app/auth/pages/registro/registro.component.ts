@@ -22,6 +22,20 @@ export class RegistroComponent implements OnInit {
     validators: [ this.validatorService.camposIguales('password', 'password2') ]
   })
 
+  get emailErrorsMsg(): string {
+    const errors = this.miFormulario.get('email')?.errors
+
+    if ( errors?.['required'] ) {
+      return 'Email es obligatorio'
+    } else if (errors?.['pattern']) {
+      return 'el email debe tener @ y terminar en .com'
+    } else if (errors?.['emailUsuado']) {
+      return `el email ${ this.miFormulario.get('email')?.value } ya fue registrado`
+    }
+
+    return '';
+  }
+
   constructor( private formBuilder: FormBuilder, 
                private validatorService: ValidatorService,
                private emailValidatorService: EmailValidatorService  ) { }
