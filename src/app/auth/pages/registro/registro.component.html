@@ -73,7 +73,9 @@
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary float-end" type="submit">Enviar</button>
+                    <button class="btn btn-primary float-end" 
+                            type="submit"
+                            [disabled]="miFormulario.pending">Enviar</button>
                 </div>
             </div>
 
@@ -82,7 +84,9 @@
     </div>
 </div>  
 
-<h2>Form Valid: {{ miFormulario.valid }}</h2>
+<h3>Form Valid: {{ miFormulario.valid }}</h3>
+<h3>Form Status: {{ miFormulario.status }}</h3>
+<h3>Form Pending: {{ miFormulario.pending }}</h3>
 <br>
 
 <h2>Form Errors</h2>
